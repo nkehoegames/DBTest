@@ -16,7 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let appKey = "1na5fuzwp9qrv6p"      // Set your own app key value here.
+        let appSecret = "u43pvddpz67zogn"   // Set your own app secret value here.
+        
+        let dropboxSession = DBSession(appKey: appKey, appSecret: appSecret, root: kDBRootAppFolder)
+        DBSession.setSharedSession(dropboxSession)
+        
         return true
+    }
+    
+  
+
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        
+        if DBSession.sharedSession().handleOpenURL(url) {
+            if DBSession.sharedSession().isLinked() {
+                NSNotificationCenter.defaultCenter().postNotificationName("didLinkToDropboxAccountNotification", object: nil)
+                return true
+            }
+        }
+        
+        return false
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -42,5 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    
 }
 

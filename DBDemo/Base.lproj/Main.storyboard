@@ -1,25 +1,106 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="DBDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="OA6-Ac-Ytj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrZ-P6-1V2">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Connect" style="plain" id="yG2-0n-xDn">
+                                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="connectToDropbox:" destination="vXZ-lx-hvc" id="T1t-ap-Tqs"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xFR-yZ-pQs"/>
+                                    <barButtonItem systemItem="refresh" id="BmN-HH-0bT">
+                                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="reloadFiles:" destination="vXZ-lx-hvc" id="Xjk-Oi-TOB"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="30" style="plain" systemItem="fixedSpace" id="1rj-Yn-FvW"/>
+                                    <barButtonItem systemItem="action" id="1P1-pt-oSx">
+                                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="performAction:" destination="vXZ-lx-hvc" id="F9P-r7-hUA"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VHq-xu-L04">
+                                <rect key="frame" x="16" y="578" width="568" height="2"/>
+                                <color key="progressTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="trackTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="f4w-ow-8Si">
+                                <rect key="frame" x="0.0" y="72" width="600" height="488"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCellFile" textLabel="jrL-SI-ttf" imageView="Lwg-xJ-x5I" rowHeight="60" style="IBUITableViewCellStyleDefault" id="KbO-KO-hRE">
+                                        <rect key="frame" x="0.0" y="22" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KbO-KO-hRE" id="bp8-ot-FdS">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jrL-SI-ttf">
+                                                    <rect key="frame" x="89" y="0.0" width="496" height="59"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="bob" id="Lwg-xJ-x5I">
+                                                    <rect key="frame" x="15" y="0.0" width="59" height="59"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vrZ-P6-1V2" firstAttribute="leading" secondItem="f4w-ow-8Si" secondAttribute="leading" id="02r-7E-BJA"/>
+                            <constraint firstItem="f4w-ow-8Si" firstAttribute="leading" secondItem="OA6-Ac-Ytj" secondAttribute="leading" id="H3E-F1-VcC"/>
+                            <constraint firstAttribute="bottom" secondItem="VHq-xu-L04" secondAttribute="bottom" constant="20" symbolic="YES" id="H5M-Rx-4ne"/>
+                            <constraint firstItem="f4w-ow-8Si" firstAttribute="top" secondItem="vrZ-P6-1V2" secondAttribute="bottom" id="Mx0-xh-uWx"/>
+                            <constraint firstItem="VHq-xu-L04" firstAttribute="centerX" secondItem="f4w-ow-8Si" secondAttribute="centerX" id="Qua-JJ-1sM"/>
+                            <constraint firstItem="VHq-xu-L04" firstAttribute="top" secondItem="f4w-ow-8Si" secondAttribute="bottom" constant="18" id="Rkx-qE-G8q"/>
+                            <constraint firstItem="vrZ-P6-1V2" firstAttribute="trailing" secondItem="f4w-ow-8Si" secondAttribute="trailing" id="SQe-3D-E3B"/>
+                            <constraint firstItem="vrZ-P6-1V2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="bmg-Lg-tgV"/>
+                            <constraint firstItem="VHq-xu-L04" firstAttribute="leading" secondItem="OA6-Ac-Ytj" secondAttribute="leadingMargin" id="csT-rw-ELb"/>
+                            <constraint firstAttribute="trailing" secondItem="f4w-ow-8Si" secondAttribute="trailing" id="iwo-hc-iBq"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bbiConnect" destination="yG2-0n-xDn" id="rpM-Ur-RpH"/>
+                        <outlet property="progressBar" destination="VHq-xu-L04" id="P8b-Bm-QAx"/>
+                        <outlet property="tblFiles" destination="f4w-ow-8Si" id="UMj-8i-L7s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="bob" width="1024" height="1024"/>
+    </resources>
 </document>
