@@ -64,7 +64,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
 
             
-            self.dbRestClient.uploadFile("bobdd.png", toPath: "/", withParentRev: nil, fromPath: sourcePath) //What it was saved as, where?,what to upload
+            self.dbRestClient.uploadFile("test.png", toPath: "/", withParentRev: nil, fromPath: sourcePath) //What it was saved as, where?,what to upload
           
           
         }
